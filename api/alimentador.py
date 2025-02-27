@@ -42,10 +42,10 @@ class X60:
         pass
 
     def connect(self):
-        sql_HOST = 'CCTDCDADNT0060'                                                                #* NOME DO SERVIDOR           
-        sql_NAME = 'gic'                                                                  #* NOME DO BANCO DE DADOS
-        sql_USER = 'usr_pesquisa_sms'                                          #* USUÁRIO DE ACESSO
-        sql_PASS = 'PesquisaSMS'                                            #* SENHA DE ACESSO
+        sql_HOST = ''                                                                #* NOME DO SERVIDOR           
+        sql_NAME = ''                                                                  #* NOME DO BANCO DE DADOS
+        sql_USER = ''                                          #* USUÁRIO DE ACESSO
+        sql_PASS = ''                                            #* SENHA DE ACESSO
 
         ##### * A VARIAVEL ABAIXO É A QUE REALIZA A CONEXÃO COM O BANCO DE DADOS
         self.conex = pyodbc.connect('DRIVER={SQL Server};'
@@ -79,21 +79,7 @@ class X60:
     def select_chamados(self):
         '''Apaga os logs antigos do banco de dados'''
         sql = f"""  
-        SELECT 
-        --count ([co_chamado])
-        --top(10)
-        [co_chamado]
-        FROM [gic].[dbo].[chamados] where [co_status_chamado] = 1 and [co_ambiente] = 44 and [co_ambiente_criacao] = 44 
-        and ([dh_chamado] between '2027-01-01 00:00:00' and '2027-01-01 00:00:00'
-        --or [dh_chamado] between '2024-01-01 00:00:00' and '2024-03-01 00:00:00' 
-        --or [dh_chamado] between '2024-05-01 00:00:00' and '2024-06-01 00:00:00' 
-        --or [dh_chamado] between '2024-06-01 00:00:00' and '2024-07-01 00:00:00' 
-        --or [dh_chamado] between '2024-07-01 00:00:00' and '2024-08-01 00:00:00' 
-        --or [dh_chamado] between '2024-08-01 00:00:00' and '2024-09-01 00:00:00' 
-        --or [dh_chamado] between '2024-09-01 00:00:00' and '2024-10-01 00:00:00' 
-        or [dh_chamado] between '2024-10-01 00:00:00' and '2024-11-01 00:00:00' 
-        or [dh_chamado] between '2024-11-01 00:00:00' and '2024-11-15 00:00:00' 
-        ) and [co_meio_acionamento] in (4)								      
+        SELECT * from table							      
         """
         consulta = self.execute(sql,catch_return='on')
         
@@ -109,10 +95,9 @@ class X60:
     def select_chamados_ok(self,chamados_receb):
         '''Apaga os logs antigos do banco de dados'''
         sql = f"""  
-        SELECT 
-        [co_status_chamado]
-        FROM [gic].[dbo].[chamados] 
-        where [co_chamado] in ({chamados_receb})								      
+        SELECT *
+        FROM table
+        where id in ({chamados_receb})								      
         """
         consulta = self.execute(sql,catch_return='on')
         qt_total = len(consulta)
