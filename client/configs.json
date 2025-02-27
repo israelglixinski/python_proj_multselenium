@@ -1,0 +1,9 @@
+{
+ "endpoint_api"     :"http://localhost:5001/"
+,"rotina"           :1                     
+,"lote"             :1                 
+,"max_qt_lote"      :10                         
+,"delay"            :0                 
+,"horarios_exec"    :1                         
+,"sleep_time"       :60                         
+}
