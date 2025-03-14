@@ -96,7 +96,7 @@ def func_CONFERE_DRIVERS           (identificador, varia_dicts_reg ,varia_dicts_
                 subpastas_com_webdriver.append(str(root).split('\\')[-1])
         drivers_locais  = subpastas_com_webdriver
         solicitacao     = {"drivers_locais":drivers_locais}
-        configs_locais  = obter_configs_locais()
+        configs_locais  = func_OBTER_CONFIGS()
         url = configs_locais['endpoint_api']
         novos_drivers   = requests.get(f'{url}verifica_drivers',json=solicitacao).json()['resposta']    
         for novo_driver in novos_drivers:

@@ -42,10 +42,10 @@ class X60:
         pass
 
     def connect(self):
-        sql_HOST = ''                                                                #* NOME DO SERVIDOR           
-        sql_NAME = ''                                                                  #* NOME DO BANCO DE DADOS
-        sql_USER = ''                                          #* USUÁRIO DE ACESSO
-        sql_PASS = ''                                            #* SENHA DE ACESSO
+        sql_HOST = ''   #* NOME DO SERVIDOR           
+        sql_NAME = ''   #* NOME DO BANCO DE DADOS
+        sql_USER = ''   #* USUÁRIO DE ACESSO
+        sql_PASS = ''   #* SENHA DE ACESSO
 
         ##### * A VARIAVEL ABAIXO É A QUE REALIZA A CONEXÃO COM O BANCO DE DADOS
         self.conex = pyodbc.connect('DRIVER={SQL Server};'
